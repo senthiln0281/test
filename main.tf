@@ -1,9 +1,6 @@
 provider "aws"{
   region = "${var.region}"
 }
-resource "vault_secret" "aws" {
-    path = "/usr/bin/awscreds"
-}
 resource "aws_s3_bucket" "497704" {
   bucket = "${var.bucket}"
   acl = "${var.acl}"
