@@ -3,7 +3,6 @@ variable "region"{
 }
 variable "bucket" {
   default = "wildrydes-senthil-497704"
-  count = 2
 }
 variable "source" {
   default = "/usr/bin/terratest"
