@@ -1,3 +1,8 @@
+provider "aws" {
+  region                  = "us-west-2"
+  shared_credentials_file = "/usr/bin/awscreds"
+  profile                 = "customprofile"
+}
 provider "aws"{
   region = "${var.region}"
   access_key = "${var.access_key}"
