@@ -1,7 +1,8 @@
-provider "aws" {
-  region                  = "us-west-2"
-  shared_credentials_file = "/usr/bin/awscreds"
-  profile                 = "customprofile"
+provider "aws"{
+  region = "${var.region}"
+}
+resource "vault_secret" "aws" {
+    path = "/usr/bin/awscreds"
 }
 resource "aws_s3_bucket" "497704" {
   bucket = "${var.bucket}"
