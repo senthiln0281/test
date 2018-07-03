@@ -13,3 +13,6 @@ variable "etag" {
 variable "acl" {
   default = "public-read"
 }
+variable "aws_dynamodb_table" {
+  default = "Rides"
+}

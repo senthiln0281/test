@@ -36,3 +36,6 @@ resource "aws_cognito_user_pool_client" "client" {
   generate_secret = false
   
 }
+resource "aws_dynamodb_table" "basic-dynamodb-table" {
+  name           = "${var.aws_dynamodb_table}"
+}
