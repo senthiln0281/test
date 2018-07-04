@@ -43,4 +43,10 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
   range_key      = "${var.range_key}"
   write_capacity     = 10
   read_capacity      = 10
+
 }
+  attribute {
+    name = "RideId"
+    type = "S"
+  }
+
