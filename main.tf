@@ -62,7 +62,7 @@ resource "aws_dynamodb_table" "dynamodb-table" {
 }
 resource "aws_iam_role" "iam_for_lambda" {
   name = "${var.aws_iam_role}"
-
+  name = "${var.aws_iam_role1}"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
