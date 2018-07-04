@@ -36,7 +36,7 @@ resource "aws_cognito_user_pool_client" "client" {
   generate_secret = false
   
 }
-resource "aws_dynamodb_table" "basic-dynamodb-table" {
+resource "aws_dynamodb_table" "dynamodb-table" {
 
   name           = "${var.aws_dynamodb_table}"
   hash_key       = "${var.hash_key}"
@@ -44,9 +44,9 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
   write_capacity     = 10
   read_capacity      = 10
 
-}
   attribute {
     name = "RideId"
     type = "S"
   }
 
+}
