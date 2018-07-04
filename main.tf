@@ -82,8 +82,8 @@ EOF
 
 resource "aws_iam_role_policy_attachment" "exec-role" {
     role      = "${aws_iam_role.iam_for_lambda.name}"
-    count      = "${length(var.iam_policy_arn)}"
-    policy_arn = "${var.iam_policy_arn[count.index]}"
+    count      = "${length(var.aws_iam_role)}"
+    policy_arn = "${var.aws_iam_role[count.index]}"
 #    policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 #    policy_arn = "arn:aws:iam::aws:policy/service-role/DynamoDBWriteAccess"
 }
