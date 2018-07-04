@@ -38,7 +38,7 @@ resource "aws_cognito_user_pool_client" "client" {
 }
 resource "aws_dynamodb_table" "basic-dynamodb-table" {
   name           = "${var.aws_dynamodb_table}"
-{
+}
 
 global_secondary_index {
 
