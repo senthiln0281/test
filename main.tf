@@ -48,5 +48,15 @@ resource "aws_dynamodb_table" "dynamodb-table" {
     name = "RideId"
     type = "S"
   }
+  attribute {
+    name = "RideId1"
+    type = "N"
+  }
+
+  ttl {
+    attribute_name = "TimeToExist"
+    enabled = false
+  }
+
 
 }
