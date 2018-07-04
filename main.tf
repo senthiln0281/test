@@ -43,6 +43,8 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
 }
   hash_key       = "RideId"
   range_key      = "RideTitle"
+  write_capacity     = 10
+  read_capacity      = 10
 
   attribute {
     name = "RideId"
