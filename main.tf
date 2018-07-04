@@ -81,8 +81,8 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "exec-role" {
-#    role       = "${aws_iam_role.iam_for_lambda.name}"
-    role       = "${aws_iam_role1.iam_for_lambda.name}
-#    policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+    role       = "${aws_iam_role.iam_for_lambda.name}"
+
+    policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
     policy_arn = "arn:aws:iam::aws:policy/service-role/DynamoDBWriteAccess"
 }
