@@ -49,7 +49,7 @@ resource "aws_dynamodb_table" "dynamodb-table" {
     type = "S"
   }
   attribute {
-    name = "RideId1"
+    name = "test"
     type = "N"
   }
 
