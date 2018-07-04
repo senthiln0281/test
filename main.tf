@@ -38,11 +38,9 @@ resource "aws_cognito_user_pool_client" "client" {
 }
 resource "aws_dynamodb_table" "basic-dynamodb-table" {
   name           = "${var.aws_dynamodb_table}"
-  resource "aws_dynamodb_table" "basic-dynamodb-table" {
-  name           = "Rides"
 }
-  hash_key       = "RideId"
-  range_key      = "RideTitle"
+  hash_key       = "${var.hash_key}"
+  range_key      = "${var.range_key}"
   write_capacity     = 10
   read_capacity      = 10
 

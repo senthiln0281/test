@@ -16,3 +16,9 @@ variable "acl" {
 variable "aws_dynamodb_table" {
   default = "Rides"
 }
+variable "hash_key" {
+  default = "RideId"
+}
+variable "range_key" {
+  default = "RideTitle"
+}
