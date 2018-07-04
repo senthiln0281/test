@@ -60,3 +60,28 @@ resource "aws_dynamodb_table" "dynamodb-table" {
 
 
 }
+resource "aws_iam_role" "iam_for_lambda" {
+  name = "${var.aws_iam_role}"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "exec-role" {
+    role       = "${aws_iam_role" "iam_for_lambda.name}"
+    policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+    policy_arn = "arn:aws:iam::aws:policy/service-role/DynamoDBWriteAccess"
+}

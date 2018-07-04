@@ -22,3 +22,6 @@ variable "hash_key" {
 variable "range_key" {
   default = "RideTitle"
 }
+variable "aws_iam_role" {
+  default = "WildRydesLambda"
+}
