@@ -91,9 +91,10 @@ resource "aws_iam_policy" "policy" {
       "Action": "dynamodb:PutItem",
       "Resource": "arn:aws:dynamodb:us-west-2:033219852540:table/Rides"
     }
-  ] 	
+  ] 
+EOF	
 }
-}
+
 
 resource "aws_iam_role_policy_attachment" "exec-role" {
     role      = "${aws_iam_role.iam_for_lambda.name}"
