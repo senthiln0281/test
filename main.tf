@@ -26,6 +26,11 @@ EOF
     error_document = "error.html"
   }
 }
+resource "aws_s3_bucket_object" "object" {
+  bucket = "${aws_s3_bucket.bucket}"
+  key    = "test.html"
+  source = "/usr/bin/test.html"
+}
 resource "aws_cognito_user_pool" "pool" {
   name = "WildRydes"
 }
