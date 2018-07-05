@@ -90,7 +90,7 @@ resource "aws_iam_policy" "policy" {
         "lambda:write"
       ],
       "Effect": "Allow",
-      "Resource": "lambda.amazonaws.com"
+      "Resource": "arn:aws:lambda:us-west-2:033219852540:function:RequestUnicorn"
     }
   ]
 }
