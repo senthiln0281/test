@@ -92,5 +92,4 @@ resource "aws_s3_bucket_object" "object" {
   bucket = "wildrydes-senthil-497704"
   key    = "test.html"
   source = "/usr/bin/test.html"
-  etag   = "${md5(file("path/to/file"))}"
 }
