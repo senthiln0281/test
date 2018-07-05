@@ -86,18 +86,14 @@ resource "aws_iam_policy" "policy" {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Action": [
-        "lambda:write"
-      ],
+      "Sid": "",
+      "Action": "lambda:*",
       "Effect": "Allow",
-
-      "Resource": "*"
+      "Resource": "arn:aws:lambda:us-west-2:033219852540:function:RequestUnicorn"
     }
   ]
 }
-EOF
 }
-
 resource "aws_iam_role_policy_attachment" "exec-role" {
     role      = "${aws_iam_role.iam_for_lambda.name}"
     policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
