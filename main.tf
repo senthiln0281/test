@@ -21,10 +21,7 @@ resource "aws_s3_bucket" "497704" {
   ]
 }
 EOF
-  website {
-    index_document = "index.html"
-    error_document = "error.html"
-  }
+ 
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -41,6 +38,9 @@ EOF
   ]
 }
 EOF
+  website {
+    index_document = "index.html"
+    error_document = "error.html"
 }
 resource "aws_s3_bucket_object" "object" {
   bucket = "wildrydes-senthil-497704"
