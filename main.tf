@@ -62,7 +62,6 @@ resource "aws_dynamodb_table" "dynamodb-table" {
 }
 resource "aws_iam_role" "iam_for_lambda" {
   name = "${var.aws_iam_role}"
-#  name = "${var.aws_iam_role}"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -87,5 +86,3 @@ resource "aws_iam_role_policy_attachment" "exec-role1" {
     role      = "${aws_iam_role.iam_for_lambda.name}"
     policy_arn = "arn:aws:iam::aws:policy/service-role/DynamoDBWriteAccess"
 }
-
-
