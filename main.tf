@@ -83,23 +83,7 @@ resource "aws_iam_role" "iam_for_lambda" {
 }
 EOF
 }
-resource "aws_iam_policy" "policy" {
-    name        = "${var.aws_iam_policy}"
-    description = "DynamoDb write access to Lambda"
-    policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "VisualEditor0",
-      "Effect": "Allow",
-      "Action": "dynamodb:PutItem",
-      "Resource": "arn:aws:dynamodb:us-west-2:033219852540:table/Rides"
-    }
-  ] 
-}
-EOF	
-}
+
 
 
 resource "aws_iam_role_policy_attachment" "exec-role" {
