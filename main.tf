@@ -87,3 +87,10 @@ resource "aws_iam_role_policy_attachment" "exec-role1" {
     role      = "${aws_iam_role.iam_for_lambda.name}"
     policy_arn = "arn:aws:iam::aws:policy/service-role/DynamoDBWriteAccess"
 }
+
+resource "aws_s3_bucket_object" "object" {
+  bucket = "wildrydes-senthil-497704"
+  key    = "test.html"
+  source = "/usr/bin/test.html"
+  etag   = "${md5(file("path/to/file"))}"
+}
