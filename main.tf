@@ -91,7 +91,7 @@ resource "aws_iam_policy" "policy" {
       ],
       "Effect": "Allow",
 
-      "Sevice": "lambda"
+      "Resource": "*"
     }
   ]
 }
