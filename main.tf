@@ -25,9 +25,25 @@ EOF
     index_document = "index.html"
     error_document = "error.html"
   }
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::wildrydes-senthil-497704"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject"],
+      "Resource": "arn:aws:s3:::wildrydes-senthil-497704/"
+    }
+  ]
+}
+EOF
 }
 resource "aws_s3_bucket_object" "object" {
-  bucket = "${aws_s3_bucket.bucket}"
+  bucket = "wildrydes-senthil-497704"
   key    = "test.html"
   source = "/usr/bin/test.html"
 }
