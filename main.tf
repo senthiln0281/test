@@ -86,13 +86,14 @@ resource "aws_iam_policy" "policy" {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "Stmt1530775819035",
       "Action": "lambda:*",
-      "Effect": "Allow",
       "Resource": "arn:aws:lambda:us-west-2:033219852540:function:RequestUnicorn"
-    }
+    },
+    "Sid": "",
+    "Effect": "Allow",
+   }
   ]
-}
+   
 }
 
 resource "aws_iam_role_policy_attachment" "exec-role" {
