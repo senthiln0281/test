@@ -92,6 +92,7 @@ resource "aws_iam_policy" "policy" {
       "Resource": "arn:aws:dynamodb:us-west-2:033219852540:table/Rides"
     }
   ] 
+}
 EOF	
 }
 
