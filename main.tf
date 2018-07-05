@@ -86,14 +86,15 @@ resource "aws_iam_policy" "policy" {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Action": "lambda:*",
-      "Resource": "arn:aws:lambda:us-west-2:033219852540:function:RequestUnicorn"
-    },
-    "Sid": "",
-    "Effect": "Allow",
-   }
+      "Action": [
+        "lambda:write"
+      ],
+      "Effect": "Allow",
+      "Resource": "lambda.amazonaws.com"
+    }
   ]
-   
+}
+EOF
 }
 
 resource "aws_iam_role_policy_attachment" "exec-role" {
