@@ -25,6 +25,6 @@ variable "range_key" {
 variable "aws_iam_role" {
   default = "WildRydesLambda"
 }
-variable "aws_iam_role1" {
+variable "aws_iam_policy" {
   default = "DynamoDBWriteAccess"
 }
