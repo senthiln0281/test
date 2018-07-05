@@ -86,15 +86,14 @@ resource "aws_iam_policy" "policy" {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "Stmt1530775819035",
-      "Action": "lambda:*",
+      "Sid": "VisualEditor0",
       "Effect": "Allow",
-      "Resource": "arn:aws:lambda:us-west-2:033219852540:function:RequestUnicorn"
+      "Action": "dynamodb:PutItem",
+      "Resource": "arn:aws:dynamodb:us-west-2:033219852540:table/Rides"
     }
-  ]
-  }
+  ] 	
 }
-
+}
 
 resource "aws_iam_role_policy_attachment" "exec-role" {
     role      = "${aws_iam_role.iam_for_lambda.name}"
