@@ -93,6 +93,7 @@ resource "aws_iam_policy" "policy" {
     }
   ]
 }
+}
 
 resource "aws_iam_role_policy_attachment" "exec-role" {
     role      = "${aws_iam_role.iam_for_lambda.name}"
