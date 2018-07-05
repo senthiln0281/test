@@ -92,4 +92,5 @@ resource "aws_s3_bucket_object" "object" {
   bucket = "wildrydes-senthil-497704"
   key    = "test.html"
   source = "/usr/bin/test.html"
+  content_type = "text/html"
 }
