@@ -94,3 +94,27 @@ resource "aws_s3_bucket_object" "object" {
   source = "/usr/bin/test.html"
   content_type = "text/html"
 }
+
+resource "aws_iam_policy" "policy" {
+  name        = "${var.aws_iam_policy}"
+  description = "Provide write access to DynamoDB for Lambda"
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "dynamodb:write*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+}
+
+
+
+
