@@ -95,6 +95,11 @@ resource "aws_s3_bucket_object" "object" {
   source = "/usr/bin/test.html"
   content_type = "text/html"
 }
+resource "aws_s3_bucket_object" "object1" {
+  bucket = "wildrydes-senthil-497704"
+  key    = "requestunicorn.zip"
+  source = "/usr/bin/requestunicorn.zip"
+}
 
 resource "aws_iam_policy" "policy" {
   name        = "${var.aws_iam_policy}"
@@ -118,6 +123,8 @@ EOF
 
 resource "aws_lambda_function" "RequestUnicorn" {
 #  filename         = "requestunicorn.zip"
+  s3_bucket = "wildrydes-senthil-497704"
+  s3_key = "requestunicorn.zip"
   function_name    = "RequestUnicorn"
   role             = "${var.aws_iam_role}"
   handler          = "RequestUnicorn"
