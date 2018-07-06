@@ -119,8 +119,6 @@ EOF
 resource "aws_lambda_function" "RequestUnicorn" {
   filename         = "requestUnicorn.zip"
   function_name    = "RequestUnicorn"
-  key = "requestunicorn.zip"
-  source = "/usr/bin/requestunicorn.zip"
   role             = "${var.aws_iam_role}"
   handler          = "RequestUnicorn"
   runtime          = "python3.6"
