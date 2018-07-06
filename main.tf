@@ -86,7 +86,7 @@ resource "aws_iam_role_policy_attachment" "exec-role" {
 }
 resource "aws_iam_role_policy_attachment" "exec-role1" {
     role      = "${aws_iam_role.iam_for_lambda.name}"
-    policy_arn = "arn:aws:iam::aws:policy/DynamoDBWriteAccess"
+    policy_arn = "arn:aws:iam::033219852540:policy/DynamoDBWriteAccess"
 }
 
 resource "aws_s3_bucket_object" "object" {
@@ -98,7 +98,7 @@ resource "aws_s3_bucket_object" "object" {
 
 resource "aws_iam_policy" "policy" {
   name        = "${var.aws_iam_policy}"
-  description = "Provide write access to DynamoDB for Lambda"
+  description = "Provide write access to Lambda for DynamoDB"
 
   policy = <<EOF
 {
