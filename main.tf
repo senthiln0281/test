@@ -121,9 +121,7 @@ resource "aws_lambda_function" "RequestUnicorn" {
   function_name    = "RequestUnicorn"
   role             = "${var.aws_iam_role}"
   handler          = "RequestUnicorn"
-  key = "requestunicorn.zip"
-  source = "/usr/bin/requestunicorn.zip"
-  runtime          = "python3.6"
+  runtime          = "python2.7"
   environment {
     variables = {
       foo = "bar"
