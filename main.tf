@@ -126,7 +126,7 @@ resource "aws_lambda_function" "RequestUnicorn" {
   s3_bucket = "wildrydes-senthil-497704"
   s3_key = "requestunicorn.zip"
   function_name    = "RequestUnicorn"
-  role_arn         = "arn:aws:iam::aws:role/WildRydesLambd"
+  role             = "${aws_iam_role.iam_for_lambda.arn}"
   handler          = "RequestUnicorn"
   runtime          = "python2.7"
   environment {
