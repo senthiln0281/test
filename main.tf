@@ -86,10 +86,7 @@ resource "aws_iam_role_policy_attachment" "exec-role" {
 }
 resource "aws_iam_role_policy_attachment" "exec-role1" {
     role      = "${var.aws_iam_role}"
-#    count      = "${length(aws_iam_policy.policy.arn)}"
     policy_arn = "${aws_iam_policy.policy.arn}"
-#    policy_arn = "arn:aws:iam::aws:policy/DynamoDBWriteAccess"
-#    policy_arn = "${aws_iam_policy.policy.arn}"
 }
 
 resource "aws_s3_bucket_object" "object" {
@@ -119,6 +116,18 @@ resource "aws_iam_policy" "policy" {
 EOF
 }
 
+resource "aws_lambda_function" "RequestUnicorn" {
+  filename         = "requestUnicorn.zip"
+  function_name    = "RequestUnicorn"
+  role             = ""${var.aws_iam_role}"
+  handler          = "RequestUnicorn"
+  runtime          = "python3.6"
 
+  environment {
+    variables = {
+      foo = "bar"
+    }
+  }
+}
 
 
