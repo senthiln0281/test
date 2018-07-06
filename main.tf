@@ -119,9 +119,14 @@ EOF
 resource "aws_lambda_function" "RequestUnicorn" {
   filename         = "requestUnicorn.zip"
   function_name    = "RequestUnicorn"
-  role             = ""${var.aws_iam_role}"
+  role             = "${var.aws_iam_role}"
   handler          = "RequestUnicorn"
   runtime          = "python3.6"
+  environment {
+    variables = {
+      foo = "bar"
+    }
+  }
 }
 
 
