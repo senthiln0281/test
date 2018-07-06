@@ -28,3 +28,7 @@ variable "aws_iam_role" {
 variable "aws_iam_policy" {
   default = "DynamoDBWriteAccess"
 }
+variable "iam_policy_arn" {
+  description = "IAM Policy to be attached to role"
+  type = "list"
+}
