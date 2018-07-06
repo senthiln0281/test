@@ -80,14 +80,12 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "exec-role" {
-    depends_on = ["aws_iam_role.iam_for_lambda"]
     role      = "${aws_iam_role.iam_for_lambda.name}"
     policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 
 }
 resource "aws_iam_role_policy_attachment" "exec-role1" {
-    depends_on = ["aws_iam_role.iam_for_lambda"]
-    role      = "${aws_iam_role.iam_for_lambda.name}"
+    role      = ["${aws_iam_role.iam_for_lambda.name}"]
     policy_arn = "arn:aws:iam::aws:policy/DynamoDBWriteAccess"
 }
 
