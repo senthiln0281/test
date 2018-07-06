@@ -86,7 +86,7 @@ resource "aws_iam_role_policy_attachment" "exec-role" {
 }
 resource "aws_iam_role_policy_attachment" "exec-role1" {
     role      = "${var.aws_iam_role}"
-    count      = "${length(var.iam_policy_arn)}"
+    count      = "${length(aws_iam_policy.policy.arn)}"
     policy_arn = "${aws_iam_policy.policy.arn}[count.index]}"
 #    policy_arn = "arn:aws:iam::aws:policy/DynamoDBWriteAccess"
 #    policy_arn = "${aws_iam_policy.policy.arn}"
