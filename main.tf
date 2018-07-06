@@ -123,12 +123,12 @@ EOF
 
 resource "aws_lambda_function" "RequestUnicorn" {
 #  filename         = "requestunicorn.zip"
-  s3_bucket = "wildrydes-senthil-497704"
-  s3_key = "requestunicorn.zip"
   function_name    = "RequestUnicorn"
   role             = "${aws_iam_role.iam_for_lambda.arn}"
   handler          = "RequestUnicorn"
   runtime          = "python2.7"
+  s3_bucket = "wildrydes-senthil-497704"
+  s3_key = "requestunicorn.zip"
   environment {
     variables = {
       foo = "bar"
