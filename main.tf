@@ -94,7 +94,7 @@ resource "aws_lambda_function" "RequestUnicorn" {
   function_name    = "${var.function_name}"
   role             = "arn:aws:iam::033219852540:role/WildRydesLambda"
   handler          = "requestunicorn.lambda_handler"
-  runtime          = "node.js 6.10"
+  runtime          = "nodejs6.10"
   s3_bucket = "${var.bucket}"
   s3_key = "requestunicorn.zip"
 }
