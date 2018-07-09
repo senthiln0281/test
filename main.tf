@@ -138,7 +138,7 @@ data "terraform_remote_state" "foo" {
   }
 }
 resource "aws_instance" "web" {
-  ami           = "ubuntu"
+  ami           = "ami-28e07e50"
   instance_type = "t2.micro"
 
   tags {
