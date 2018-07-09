@@ -125,10 +125,16 @@ resource "aws_lambda_function" "RequestUnicorn" {
 #  filename         = "requestunicorn.zip"
   function_name    = "requestunicorn"
   role             = "${aws_iam_role.iam_for_lambda.arn}"
-  handler          = "requestunicorn"
+  handler          = "requestunicorn.lambda_handler"
   runtime          = "python2.7"
   s3_bucket = "wildrydes-senthil-497704"
   s3_key = "requestunicorn.zip"
 }
+data "terraform_remote_state" "foo" {
+  backend = "local"
 
+  config {
+    path = "/usr/bin/terraform.tfstate"
+  }
+}
 
