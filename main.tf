@@ -129,11 +129,6 @@ resource "aws_lambda_function" "RequestUnicorn" {
   runtime          = "python2.7"
   s3_bucket = "wildrydes-senthil-497704"
   s3_key = "requestunicorn.zip"
-  environment {
-    variables = {
-      foo = "bar"
-    }
-  }
 }
 
 
