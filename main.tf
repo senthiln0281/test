@@ -88,15 +88,16 @@ resource "aws_iam_role_policy_attachment" "exec-role1" {
     role      = "${var.aws_iam_role}"
     policy_arn = "${aws_iam_policy.policy.arn}"
 }
-resource "aws_lambda_function" "RequestUnicorn1" {
+
+resource "aws_lambda_function" "RequestUnicorn" {
+#  filename         = "requestunicorn.zip"
   function_name    = "requestunicorn"
-  role             = "${aws_iam_role.iam_for_lambda.arn}"
+  role             = "arn:aws:iam::033219852540:role/WildRydesLambda"
   handler          = "requestunicorn.lambda_handler"
   runtime          = "python2.7"
   s3_bucket = "wildrydes-senthil-497704"
   s3_key = "requestunicorn.zip"
 }
-
 resource "aws_s3_bucket_object" "object" {
   bucket = "wildrydes-senthil-497704"
   key    = "test.html"
@@ -137,11 +138,4 @@ data "terraform_remote_state" "foo" {
     path = "/usr/bin/terraform.tfstate"
   }
 }
-resource "aws_instance" "web" {
-  ami           = "ami-28e07e50"
-  instance_type = "t2.micro"
 
-  tags {
-    Name = "test"
-  }
-}
