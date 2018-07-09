@@ -28,6 +28,6 @@ variable "aws_iam_role" {
 variable "aws_iam_policy" {
   default = "DynamoDBWriteAccess"
 }
-variable "aws_function_name" {
+variable "function_name" {
   default = "requestunicorn"
 }
