@@ -121,9 +121,8 @@ resource "aws_iam_policy" "policy" {
 EOF
 }
 
-resource "aws_lambda_function" "RequestUnicorn" {
-#  filename         = "requestunicorn.zip"
-  function_name    = "requestunicorn"
+resource "aws_lambda_function" "RequestUnicorn1" {
+  function_name    = "requestunicorn1"
   role             = "${aws_iam_role.iam_for_lambda.arn}"
   handler          = "requestunicorn.lambda_handler"
   runtime          = "python2.7"
