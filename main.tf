@@ -91,21 +91,21 @@ resource "aws_iam_role_policy_attachment" "exec-role1" {
 
 resource "aws_lambda_function" "RequestUnicorn" {
 #  filename         = "requestunicorn.zip"
-  function_name    = "requestunicorn"
+  function_name    = "${var.function_name}"
   role             = "arn:aws:iam::033219852540:role/WildRydesLambda"
   handler          = "requestunicorn.lambda_handler"
   runtime          = "python2.7"
-  s3_bucket = "wildrydes-senthil-497704"
+  s3_bucket = "${var.bucket}"
   s3_key = "requestunicorn.zip"
 }
 resource "aws_s3_bucket_object" "object" {
-  bucket = "wildrydes-senthil-497704"
+  bucket = "${var.bucket}"
   key    = "test.html"
   source = "/usr/bin/test.html"
   content_type = "text/html"
 }
 resource "aws_s3_bucket_object" "object1" {
-  bucket = "wildrydes-senthil-497704"
+  bucket = "${var.bucket}"
   key    = "requestunicorn.zip"
   source = "/usr/bin/requestunicorn.zip"
 }
