@@ -107,7 +107,7 @@ resource "aws_s3_bucket_object" "object" {
 resource "aws_s3_bucket_object" "object1" {
   bucket = "${var.bucket}"
   key    = "requestunicorn.zip"
-  source = "/home/ec2-user/requestunicorn.zip"
+  source = "/usr/bin/requestunicorn.zip"
 }
 
 resource "aws_iam_policy" "policy" {
