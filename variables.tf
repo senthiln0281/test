@@ -31,3 +31,6 @@ variable "aws_iam_policy" {
 variable "function_name" {
   default = "requestunicorn"
 }
+variable "api" {
+  default = "WildRydes"
+}
