@@ -119,15 +119,14 @@ resource "aws_iam_policy" "policy" {
   "Version": "2012-10-17",
   "Statement": [
     {
+      "Sid": "Stmt1531226035412",
       "Action": [
-        "dynamodb:write*"
+        "dynamodb:PutItem"
       ],
       "Effect": "Allow",
-      "Resource": "*"
+      "Resource": "arn:aws:dynamodb:us-west-2:033219852540:table/Rides"
     }
   ]
-}
-EOF
 }
 
 
