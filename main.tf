@@ -143,6 +143,6 @@ resource "aws_api_gateway_rest_api" "WildRydes" {
   name        = "${var.api}"
 
   endpoint_configuration {
-    types = ["Edge optimized"]
+    types = ["Edge"]
   }
 }
