@@ -1,12 +1,9 @@
 provider "aws"{
   region = "${var.region}"
 }
-resource "aws_lambda_function" "RequestUnicorn" {
-#  filename         = "requestunicorn.zip"
-  function_name    = "requestunicorn"
-  role             = "arn:aws:iam::033219852540:role/WildRydesLambda"
-  handler          = "requestunicorn"
-  runtime          = "python2.7"
-  s3_bucket = "wildrydes-senthil-497704"
-  s3_key = "requestunicorn.zip"
+resource "aws_api_gateway_authorizer" "WildRydes" {
+  name                   = "WildRydes"
+  rest_api_id            = "${aws_api_gateway_rest_api.WildRydes.id}"
+#  authorizer_uri         = "${aws_lambda_function.authorizer.invoke_arn}"
+  authorizer_credentials = "${aws_iam_role.iam_for_lambda.name}"
 }
