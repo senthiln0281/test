@@ -143,7 +143,7 @@ resource "aws_api_gateway_authorizer" "WildRydes" {
   rest_api_id            = "${aws_api_gateway_rest_api.WildRydes.id}"
 #  authorizer_uri         = ""
 #  authorizer_credentials = "${aws_iam_role.iam_for_lambda.name}"
-  type = "COGNITO_USER_POOLS"
+  type = "TOKEN"
   
 }
 resource "aws_api_gateway_rest_api" "WildRydes" {
