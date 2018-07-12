@@ -140,10 +140,10 @@ data "terraform_remote_state" "foo" {
 }
 resource "aws_api_gateway_authorizer" "WildRydes" {
   name                   = "WildRydes"
-  rest_api_id            = "${aws_api_gateway_rest_api.WildRydes.id}"
-  authorizer_uri         = "${var.api.id}"
+  api_id = "${var.api.id}"
+#  authorizer_uri         = "${aws_api_gateway_rest_api.WildRydes.arn}"
 #  authorizer_credentials = "${aws_iam_role.iam_for_lambda.name}"
-  type = "TOKEN"
+  type = "Cognito"
   
 }
 resource "aws_api_gateway_rest_api" "WildRydes" {
