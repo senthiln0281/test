@@ -145,7 +145,7 @@ resource "aws_api_gateway_authorizer" "WildRydes" {
   provider_arns = ["${data.aws_cognito_user_pools.WildRydes.arns}"]
 }
   
-}
+
 resource "aws_api_gateway_rest_api" "WildRydes" {
   name        = "${var.api}"
 
