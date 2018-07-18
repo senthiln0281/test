@@ -142,7 +142,7 @@ resource "aws_api_gateway_authorizer" "WildRydes" {
   name          = "WildRydes"
   type          = "COGNITO_USER_POOLS"
   rest_api_id   = "${aws_api_gateway_rest_api.WildRydes.id}"
-  provider_arns = ["${data.aws_cognito_user_pools.WildRydes.arns}"]
+  provider_arns = ["${aws_cognito_user_pools.WildRydes.arns}"]
 }
   
 
