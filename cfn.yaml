@@ -1,0 +1,53 @@
+Description: 'AWS CloudFormation Sample Template EC2InstanceWithSecurityGroupSample:'
+Parameters:
+  KeyName:
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
+    Type: String
+    Default: fft_497704
+    ConstraintDescription: must be the name of an existing EC2 KeyPair.
+  InstanceType:
+    Description: WebServer EC2 instance type
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+    - t1.micro
+    - t2.nano
+    - t2.micro
+    - t2.small
+    - t2.medium
+    ConstraintDescription: must be a valid EC2 instance type.
+  SSHLocation:
+    Description: The IP address range that can be used to SSH to the EC2 instances
+    Type: String
+    MinLength: '9'
+    MaxLength: '18'
+    Default: 0.0.0.0/0
+    AllowedPattern: "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})"
+    ConstraintDescription: must be a valid IP CIDR range of the form x.x.x.x/x.
+  ImageId:
+    Description: Image can be used for all deployments
+    Type: String
+    Default: ami-d4ac58a9
+  SecurityGroup:
+    Description: Allowed security group details
+    Type: String
+    Default: fft_497704_Lamp
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType:
+      - Ref: InstanceType
+      SecurityGroups:
+      - Ref: SecurityGroup
+      KeyName:
+      - Ref: KeyName
+      ImageId:
+      - Ref: ImageId  
+Outputs:
+  InstanceId:
+    Description: InstanceId of the newly created EC2 instance
+    Value:
+      Ref: EC2Instance
+
+
