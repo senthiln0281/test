@@ -139,11 +139,11 @@ data "terraform_remote_state" "foo" {
   }
 }
 resource "aws_api_gateway_authorizer" "WildRydes" {
-  name                   = "WildRydes"
-#  rest_api_id   = "${aws_api_gateway_rest_api.WildRydes.id}"
-  authorizer_uri         = "${aws_api_gateway_rest_api.WildRydes.arn}"
-#  authorizer_credentials = "${aws_iam_role.iam_for_lambda.name}"
-#  authorization = "COGNITO_USER_POOLS"
+  name          = "WildRydes"
+  type          = "COGNITO_USER_POOLS"
+  rest_api_id   = "${aws_api_gateway_rest_api.WildRydes.id}"
+  provider_arns = ["${data.aws_cognito_user_pools.WildRydes.arns}"]
+}
   
 }
 resource "aws_api_gateway_rest_api" "WildRydes" {
