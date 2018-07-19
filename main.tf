@@ -163,7 +163,7 @@ resource "aws_api_gateway_resource" "ride" {
 resource "aws_api_gateway_method" "POST" {
   rest_api_id   = "${aws_api_gateway_rest_api.WildRydes.id}"
   resource_id   = "${aws_api_gateway_resource.ride.id}"
-  http_method   = "POST"
+#  http_method   = "POST"
 #  selection_pattern = "${aws_lambda_function.RequestUnicorn.arn}"
   #integration_http_method = "POST"
   authorization = "COGNITO_USER_POOLS"
@@ -193,7 +193,7 @@ resource "aws_lambda_permission" "apigw_lambda" {
 resource "aws_api_gateway_method_response" "200" {
   rest_api_id = "${aws_api_gateway_rest_api.WildRydes.id}"
   resource_id = "${aws_api_gateway_resource.ride.id}"
-  http_method = "${aws_api_gateway_method.POST.http_method}"
+#  http_method = "${aws_api_gateway_method.POST.http_method}"
   status_code = "200"
   response_parameters = {
     "method.response.header.Access-Control-Allow-Headers" = true,
@@ -207,7 +207,7 @@ resource "aws_api_gateway_method_response" "200" {
 resource "aws_api_gateway_integration_response" "WildRydes" {
   rest_api_id = "${aws_api_gateway_rest_api.WildRydes.id}"
   resource_id = "${aws_api_gateway_resource.ride.id}"
-  http_method = "${aws_api_gateway_method.POST.http_method}"
+#  http_method = "${aws_api_gateway_method.POST.http_method}"
   status_code = "${aws_api_gateway_method_response.200.status_code}"
 
   response_parameters = {
