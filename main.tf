@@ -166,7 +166,7 @@ resource "aws_api_gateway_method" "POST" {
   http_method   = "POST"
 #  selection_pattern = "${aws_lambda_function.RequestUnicorn.arn}"
   #integration_http_method = "POST"
-  authorization = "${aws_api_gateway_authorizer.WildRydes.id}"
+  authorization = "${aws_cognito_user_pool.pool.id}"
 }
 
 resource "aws_api_gateway_integration" "Integration" {
