@@ -175,7 +175,7 @@ resource "aws_api_gateway_integration" "Integration" {
   resource_id = "${aws_api_gateway_resource.ride.id}"
 #  selection_pattern = "${aws_api_gateway_method.POST.selection_pattern}"
   http_method = "${aws_api_gateway_method.POST.http_method}"
-  type        = "MOCK"
+  type        = "Lambda"
 
 }
 
