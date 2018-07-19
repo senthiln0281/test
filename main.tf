@@ -166,7 +166,7 @@ resource "aws_api_gateway_method" "POST" {
   http_method   = "POST"
 #  selection_pattern = "${aws_lambda_function.RequestUnicorn.arn}"
   #integration_http_method = "POST"
-  authorization = "NONE"
+  authorization = "WildRydes"
 }
 
 resource "aws_api_gateway_integration" "MyDemoIntegration" {
@@ -200,4 +200,10 @@ resource "aws_api_gateway_integration_response" "WildRydes" {
   resource_id = "${aws_api_gateway_resource.ride.id}"
   http_method = "${aws_api_gateway_method.POST.http_method}"
   status_code = "${aws_api_gateway_method_response.200.status_code}"
+}
+
+resource "aws_api_gateway_deployment" "Deployment" {
+  depends_on = ["aws_api_gateway_integration.WildRydes"]
+  rest_api_id = "${aws_api_gateway_rest_api.WildRydes.id}"
+  stage_name  = "test"
 }
