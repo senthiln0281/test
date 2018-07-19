@@ -195,12 +195,7 @@ resource "aws_api_gateway_method_response" "200" {
   resource_id = "${aws_api_gateway_resource.ride.id}"
   http_method = "${aws_api_gateway_method.POST.http_method}"
   status_code = "200"
-  response_parameters = {
-    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
-    "method.response.header.Access-Control-Allow-Methods" = "'GET,OPTIONS,POST,PUT'",
-    "method.response.header.Access-Control-Allow-Origin" = "'*'"
-  }
-  depends_on = ["aws_api_gateway_method_response.200"]
+
 }
 
 
@@ -209,6 +204,12 @@ resource "aws_api_gateway_integration_response" "WildRydes" {
   resource_id = "${aws_api_gateway_resource.ride.id}"
   http_method = "${aws_api_gateway_method.POST.http_method}"
   status_code = "${aws_api_gateway_method_response.200.status_code}"
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+    "method.response.header.Access-Control-Allow-Methods" = "'OPTIONS,POST'",
+    "method.response.header.Access-Control-Allow-Origin" = "'*'"
+  }
+  depends_on = ["aws_api_gateway_method_response.200"]
 }
 
 resource "aws_api_gateway_deployment" "Deployment" {
