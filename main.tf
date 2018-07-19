@@ -169,7 +169,7 @@ resource "aws_api_gateway_method" "POST" {
   authorization = "WildRydes"
 }
 
-resource "aws_api_gateway_integration" "MyDemoIntegration" {
+resource "aws_api_gateway_integration" "Integration" {
   rest_api_id = "${aws_api_gateway_rest_api.WildRydes.id}"
   resource_id = "${aws_api_gateway_resource.ride.id}"
 #  selection_pattern = "${aws_api_gateway_method.POST.selection_pattern}"
@@ -203,7 +203,7 @@ resource "aws_api_gateway_integration_response" "WildRydes" {
 }
 
 resource "aws_api_gateway_deployment" "Deployment" {
-  depends_on = ["aws_api_gateway_integration.WildRydes"]
+  depends_on = ["aws_api_gateway_integration.Integration"]
   rest_api_id = "${aws_api_gateway_rest_api.WildRydes.id}"
   stage_name  = "test"
 }
