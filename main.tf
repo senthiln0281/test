@@ -209,7 +209,7 @@ resource "aws_api_gateway_integration_response" "WildRydes" {
     "method.response.header.Access-Control-Allow-Methods" = "'OPTIONS,POST'",
     "method.response.header.Access-Control-Allow-Origin" = "'*'"
   }
-  depends_on = ["aws_api_gateway_method_response.200"]
+#  depends_on = ["aws_api_gateway_method_response.200"]
 }
 
 resource "aws_api_gateway_deployment" "Deployment" {
