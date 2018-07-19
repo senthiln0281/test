@@ -206,5 +206,5 @@ resource "aws_api_gateway_integration_response" "WildRydes" {
 resource "aws_api_gateway_deployment" "Deployment" {
   depends_on = ["aws_api_gateway_integration.Integration"]
   rest_api_id = "${aws_api_gateway_rest_api.WildRydes.id}"
-  stage_name  = "test"
+  stage_name  = "prod"
 }
