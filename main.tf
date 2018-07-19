@@ -157,12 +157,31 @@ resource "aws_api_gateway_rest_api" "WildRydes" {
 resource "aws_api_gateway_resource" "ride" {
   rest_api_id = "${aws_api_gateway_rest_api.WildRydes.id}"
   parent_id   = "${aws_api_gateway_rest_api.WildRydes.root_resource_id}"
-  path_part   = "mydemoresource"
+  path_part   = "ride"
 }
 
 resource "aws_api_gateway_method" "POST" {
   rest_api_id   = "${aws_api_gateway_rest_api.WildRydes.id}"
   resource_id   = "${aws_api_gateway_resource.ride.id}"
   http_method   = "POST"
+  selection_pattern = "${aws_lambda_function.RequestUnicorn.arn}"
   authorization = "NONE"
+}
+
+resource "aws_api_gateway_integration" "MyDemoIntegration" {
+  rest_api_id = "${aws_api_gateway_rest_api.WildRydes.id}"
+  resource_id = "${aws_api_gateway_resource.ride.id}"
+  selection_pattern = "${aws_api_gateway_method.POST.selection_pattern}"
+  type        = "MOCK"
+}
+
+
+resource "aws_lambda_permission" "apigw_lambda" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = "${aws_lambda_function.RequestUnicorn.arn}"
+  principal     = "apigateway.amazonaws.com"
+
+  # More: http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-control-access-using-iam-policies-to-invoke-api.html
+  #source_arn = "arn:aws:execute-api:${var.myregion}:${var.accountId}:${aws_api_gateway_rest_api.api.id}/*/${aws_api_gateway_method.method.http_method}${aws_api_gateway_resource.resource.path}"
 }
