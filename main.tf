@@ -196,7 +196,7 @@ resource "aws_api_gateway_method_response" "200" {
 }
 
 resource "aws_api_gateway_integration_response" "WildRydes" {
-  rrest_api_id = "${aws_api_gateway_rest_api.WildRydes.id}"
+  rest_api_id = "${aws_api_gateway_rest_api.WildRydes.id}"
   resource_id = "${aws_api_gateway_resource.ride.id}"
   http_method = "${aws_api_gateway_method.POST.http_method}"
   status_code = "${aws_api_gateway_method_response.200.status_code}"
