@@ -216,7 +216,7 @@ resource "aws_api_gateway_integration_response" "WildRydes" {
     "method.response.header.Access-Control-Allow-Methods" = "'OPTIONS,POST'",
     "method.response.header.Access-Control-Allow-Origin" = "'*'"
   response_templates = {
-    "application/json" = "$input.path('$')"
+    "application/json" = ""
   }
   }
   depends_on = ["aws_api_gateway_method_response.200"]
