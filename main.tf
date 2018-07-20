@@ -177,7 +177,7 @@ resource "aws_api_gateway_integration" "Integration" {
   http_method = "${aws_api_gateway_method.POST.http_method}"
   type        = "AWS_PROXY"
   uri                     = "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/${aws_lambda_function.RequestUnicorn.arn}/invocations"
-  integration_http_method = "OPTIONS,POST"
+  integration_http_method = "OPTIONS"
 }
 
 
