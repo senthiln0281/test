@@ -211,14 +211,11 @@ resource "aws_api_gateway_integration_response" "WildRydes" {
   http_method = "${aws_api_gateway_method.POST.http_method}"
   status_code = "${aws_api_gateway_method_response.200.status_code}"
 
-  response_parameters = {
+/*  response_parameters = {
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
     "method.response.header.Access-Control-Allow-Methods" = "'OPTIONS,POST'",
     "method.response.header.Access-Control-Allow-Origin" = "'*'"
-  response_templates = {
-    "application/json" = ""
-  }
-  }
+  } */
   depends_on = ["aws_api_gateway_method_response.200"]
 
 }
