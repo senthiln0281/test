@@ -177,7 +177,7 @@ resource "aws_api_gateway_integration" "Integration" {
   http_method = "${aws_api_gateway_method.POST.http_method}"
   type        = "AWS_PROXY"
   uri                     = "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/${aws_lambda_function.RequestUnicorn.arn}/invocations"
-  integration_http_method = "POST"
+  integration_http_method = "OPTIONS,POST"
 }
 
 
@@ -213,7 +213,7 @@ resource "aws_api_gateway_integration_response" "WildRydes" {
 
   response_parameters = {
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
-    "method.response.header.Access-Control-Allow-Methods" = "'GET,OPTIONS,POST,PUT'",
+    "method.response.header.Access-Control-Allow-Methods" = "'OPTIONS,POST'",
     "method.response.header.Access-Control-Allow-Origin" = "'*'"
   }
 #  depends_on = ["aws_api_gateway_method_response.200"]
