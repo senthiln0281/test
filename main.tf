@@ -225,3 +225,26 @@ resource "aws_api_gateway_deployment" "Deployment" {
   rest_api_id = "${aws_api_gateway_rest_api.WildRydes.id}"
   stage_name  = "prod"
 } 
+
+
+
+
+resource "aws_iam_role" "role" {
+  name = "myrole"
+
+  assume_role_policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+POLICY
+}
