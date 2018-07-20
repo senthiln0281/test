@@ -177,7 +177,7 @@ resource "aws_api_gateway_integration" "Integration" {
   http_method = "${aws_api_gateway_method.POST.http_method}"
   type        = "AWS_PROXY"
   uri                     = "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/${aws_lambda_function.RequestUnicorn.arn}/invocations"
-  integration_http_method = "OPTIONS"
+  integration_http_method = "POST"
 }
 
 
@@ -196,6 +196,9 @@ resource "aws_api_gateway_method_response" "200" {
   resource_id = "${aws_api_gateway_resource.ride.id}"
   http_method = "${aws_api_gateway_method.POST.http_method}"
   status_code = "200"
+  response_models = {
+       "application/json" = "Empty"
+  }
   response_parameters = {
     "method.response.header.Access-Control-Allow-Headers" = true,
     "method.response.header.Access-Control-Allow-Methods" = true,
@@ -210,6 +213,9 @@ resource "aws_api_gateway_integration_response" "WildRydes" {
   resource_id = "${aws_api_gateway_resource.ride.id}"
   http_method = "${aws_api_gateway_method.POST.http_method}"
   status_code = "${aws_api_gateway_method_response.200.status_code}"
+  response_templates = {
+      "application/json" = ""
+  } 
 
   response_parameters = {
 
