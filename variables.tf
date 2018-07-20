@@ -1,6 +1,9 @@
 variable "region"{
   default = "us-west-2"
 }
+variable "accountId"{
+  default = "033219852540"
+}
 variable "bucket" {
   default = "wildrydes-senthil-497704"
 }
