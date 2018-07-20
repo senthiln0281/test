@@ -217,15 +217,6 @@ resource "aws_api_gateway_integration_response" "WildRydes" {
     "method.response.header.Access-Control-Allow-Origin" = "'*'"
   }
   depends_on = ["aws_api_gateway_method_response.200"]
-  response_templates {
-    "application/xml" = <<EOF
-#set($inputRoot = $input.path('$'))
-<?xml version="1.0" encoding="UTF-8"?>
-<message>
-    $inputRoot.body
-</message>
-EOF
-  }
 
 }
 
